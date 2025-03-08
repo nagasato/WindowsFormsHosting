@@ -1,0 +1,11 @@
+WindowsFormsHosting
+===================
+
+これは何？
+-------------------
+GenericHostにWindows Fromsアプリを載せる(対応させる)WindowsHostedServiceの習作的実装。
+
+* Windows Fromsに対して、なるべく薄いラップとしたい。
+* .NETだけでなく、.NET Frameworkにも対応したい。
+* こちら([WindowsFormsLifetime](https://github.com/alex-oswald/WindowsFormsLifetime))のリポジトリを実装の参考にした。
+   

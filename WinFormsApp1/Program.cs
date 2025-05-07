@@ -22,16 +22,22 @@ namespace WinFormsApp1
             // 未処理例外の扱い
             Application.SetUnhandledExceptionMode(UnhandledExceptionMode.Automatic); // 構成ファイルに従う
 
+            Application.ApplicationExit += Application_ApplicationExit;
+            Application.ThreadException += Application_ThreadException;
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+
             // HostApplicationBuilder
             var builder = Host.CreateApplicationBuilder(args);
             // ロギング構成
             builder.Logging.ClearProviders()
-                           .AddDebug();
+                           .AddDebug()
+                           .SetMinimumLevel(LogLevel.Trace);
 
-            // WindowsFormsをGenericHostに載せる開始Form(MainForm) -> IHostedServiceの実装
-            builder.UseWindowsForms<Form1>(Application_ApplicationExit,
-                                           Application_ThreadException,
-                                           CurrentDomain_UnhandledException);
+            // WindowsFormsをGenericHostに載せる
+            builder.AddWinFormsHosting<Form1>();
+            // --- FormFactoryとFormの登録 --- 
+            builder.Services.AddSingleton<IFormFactory, FormFactory>(); // Singleton
+            builder.Services.AddTransient<Form2>(); // 場合に応じてSingleton
 
             var host = builder.Build();
             _logger = host.Services.GetService<ILoggerFactory>()?.CreateLogger(categoryName: "Program"); // ILogger<Program> はProgramがstatic classなため使えない
@@ -41,16 +47,20 @@ namespace WinFormsApp1
         private static void Application_ApplicationExit(object? sender, EventArgs e)
         {
             _logger?.LogInformation("Application Exit!!!");
+            Application.ThreadException -= Application_ThreadException;
+            AppDomain.CurrentDomain.UnhandledException -= CurrentDomain_UnhandledException;
         }
 
         private static void Application_ThreadException(object sender, ThreadExceptionEventArgs e)
         {
             _logger?.LogError(e.Exception, "Application_ThreadException!!!");
+            MessageBox.Show(e.Exception.ToString(), "ThreadException", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
             _logger?.LogError(e.ExceptionObject as Exception, "CurrentDomain_UnhandledException!!!");
+            MessageBox.Show((e.ExceptionObject as Exception)?.ToString(), "UnhandledException", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

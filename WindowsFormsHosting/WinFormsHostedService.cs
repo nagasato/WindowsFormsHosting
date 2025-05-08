@@ -15,9 +15,9 @@ namespace WindowsFormsHosting
     {
         private readonly ILogger<WinFormsHostedService> _logger;
 
-        private readonly IShutdownRequestHandler _shutdownHandler;
-        private readonly ApplicationContext _appContext;
         private readonly IHostApplicationLifetime _hostLifetime;
+        private readonly ApplicationContext _appContext;
+        private readonly IShutdownRequestHandler _shutdownHandler;
         private readonly IHostEnvironment _environment;
         private CancellationTokenRegistration _applicationStoppingRegistration;
         private Task _uiThreadTask = Task.CompletedTask;
@@ -26,22 +26,22 @@ namespace WindowsFormsHosting
         /// <summary>
         /// WinFormsHostedService Constructor
         /// </summary>
-        /// <param name="logger"></param>
+        /// <param name="hostLifetime"></param>
         /// <param name="appContext"></param>
         /// <param name="shutdownHandler"></param>
-        /// <param name="hostLifetime"></param>
         /// <param name="environment"></param>
+        /// <param name="logger"></param>
         public WinFormsHostedService(
-            ILogger<WinFormsHostedService> logger,
+            IHostApplicationLifetime hostLifetime,
             ApplicationContext appContext,
             IShutdownRequestHandler shutdownHandler,
-            IHostApplicationLifetime hostLifetime,
-            IHostEnvironment environment)
+            IHostEnvironment environment,
+            ILogger<WinFormsHostedService> logger)
         {
             _logger = logger;
+            _hostLifetime = hostLifetime;
             _appContext = appContext;
             _shutdownHandler = shutdownHandler;
-            _hostLifetime = hostLifetime;
             _environment = environment;
         }
 

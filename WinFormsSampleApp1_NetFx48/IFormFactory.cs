@@ -1,4 +1,6 @@
-﻿namespace WinFormsApp1
+﻿using System.Windows.Forms;
+
+namespace WinFormsSampleApp1_NetFx48
 {
     /// <summary>
     /// フォームのインスタンスを生成するためのFactory Interface

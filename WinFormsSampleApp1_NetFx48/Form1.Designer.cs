@@ -1,4 +1,4 @@
-﻿namespace WinFormsNetFx48App1
+﻿namespace WinFormsSampleApp1_NetFx48
 {
     partial class Form1
     {

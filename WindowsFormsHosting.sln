@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35825.156 d17.13
+VisualStudioVersion = 17.13.35825.156
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ソリューション項目", "ソリューション項目", "{2022CB0F-8BAF-F49E-0C48-8EF4C96EC109}"
 	ProjectSection(SolutionItems) = preProject
@@ -11,9 +11,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ソリューション項目
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsHosting", "WindowsFormsHosting\WindowsFormsHosting.csproj", "{C5C277F1-0CB7-4556-80CC-E26404913448}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsApp1", "WinFormsApp1\WinFormsApp1.csproj", "{28B839FB-0151-4002-863A-EB782CD91B1F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsSampleApp1", "WinFormsSampleApp1\WinFormsSampleApp1.csproj", "{28B839FB-0151-4002-863A-EB782CD91B1F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsNetFx48App1", "WinFormsNetFx48App1\WinFormsNetFx48App1.csproj", "{A0D81D85-ACBE-405F-9F93-3D8D834F1464}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsSampleApp1_NetFx48", "WinFormsSampleApp1_NetFx48\WinFormsSampleApp1_NetFx48.csproj", "{A0D81D85-ACBE-405F-9F93-3D8D834F1464}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

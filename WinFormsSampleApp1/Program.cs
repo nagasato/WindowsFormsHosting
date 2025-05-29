@@ -3,7 +3,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using WindowsFormsHosting;
 
-namespace WinFormsApp1
+namespace WinFormsSampleApp1
 {
     internal static class Program
     {
@@ -37,7 +37,7 @@ namespace WinFormsApp1
             builder.AddWinFormsHosting<Form1>();
             // --- FormFactory‚ÆForm‚Ì“o˜^ --- 
             builder.Services.AddSingleton<IFormFactory, FormFactory>(); // Singleton
-            builder.Services.AddTransient<Form2>(); // ê‡‚É‰‚¶‚ÄSingleton
+            builder.Services.AddTransient<Form2>(); // MainFormˆÈŠO‚ÍTransient‚ª‘å¨‚¾‚ë‚¤
 
             var host = builder.Build();
             _logger = host.Services.GetService<ILoggerFactory>()?.CreateLogger(categoryName: "Program"); // ILogger<Program> ‚ÍProgram‚ªstatic class‚È‚½‚ßg‚¦‚È‚¢

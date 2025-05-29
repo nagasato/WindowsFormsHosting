@@ -6,7 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using WindowsFormsHosting;
 
-namespace WinFormsNetFx48App1
+namespace WinFormsSampleApp1_NetFx48
 {
     static class Program
     {
@@ -39,7 +39,7 @@ namespace WinFormsNetFx48App1
             builder.AddWinFormsHosting<Form1>();
             // --- FormFactoryとFormの登録 --- 
             builder.Services.AddSingleton<IFormFactory, FormFactory>(); // Singleton
-            builder.Services.AddTransient<Form2>(); // 場合に応じてSingleton
+            builder.Services.AddTransient<Form2>(); // MainForm以外はTransientが大勢だろう
 
             var host = builder.Build();
             _logger = host.Services.GetService<ILoggerFactory>()?.CreateLogger(categoryName: "Program"); // ILogger<Program> はProgramがstatic classなため使えない

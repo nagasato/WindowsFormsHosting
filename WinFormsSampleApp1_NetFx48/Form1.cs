@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WinFormsNetFx48App1
+namespace WinFormsSampleApp1_NetFx48
 {
     public partial class Form1: Form
     {

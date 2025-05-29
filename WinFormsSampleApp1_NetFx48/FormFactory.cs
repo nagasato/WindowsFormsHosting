@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace WinFormsNetFx48App1
+namespace WinFormsSampleApp1_NetFx48
 {
     /// <summary>
     /// IFormFactory の実装

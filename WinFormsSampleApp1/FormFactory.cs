@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace WinFormsApp1
+namespace WinFormsSampleApp1
 {
     /// <summary>
     /// IFormFactory の実装

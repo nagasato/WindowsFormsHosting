@@ -23,6 +23,7 @@ namespace WinFormsSampleApp1_NetFx48
 
         private void button1_Click(object sender, EventArgs e)
         {
+            // Program.cs の例外トラップを確認するために、意図的に例外をスローする
             throw new ApplicationException("Test Exception");
         }
 

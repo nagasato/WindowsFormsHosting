@@ -9,10 +9,10 @@ namespace WindowsFormsHosting
     /// WindowsForms Hosting ApplicationContext
     /// </summary>
     /// <typeparam name="TForm"></typeparam>
-    public class MainAppContext<TForm> : ApplicationContext, IShutdownRequestHandler
+    public class WinFormsAppContext<TForm> : ApplicationContext, IShutdownRequestHandler
         where TForm : Form
     {
-        private readonly ILogger<MainAppContext<TForm>> _logger;
+        private readonly ILogger<WinFormsAppContext<TForm>> _logger;
 
         private readonly IHostApplicationLifetime _hostLifetime;
         private readonly TForm _mainForm;
@@ -24,10 +24,10 @@ namespace WindowsFormsHosting
         /// <param name="mainForm"></param>
         /// <param name="logger"></param>
         /// <exception cref="ArgumentNullException"></exception>
-        public MainAppContext(
+        public WinFormsAppContext(
             IHostApplicationLifetime hostLifetime,
             TForm mainForm,
-            ILogger<MainAppContext<TForm>> logger)
+            ILogger<WinFormsAppContext<TForm>> logger)
         {
             _hostLifetime = hostLifetime ?? throw new ArgumentNullException(nameof(hostLifetime));
             _mainForm = mainForm ?? throw new ArgumentNullException(nameof(mainForm));

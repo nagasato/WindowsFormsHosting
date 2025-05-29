@@ -28,9 +28,9 @@ namespace WindowsFormsHosting
 
                     // --- ApplicationContext の登録 (Singleton) ---
                     // 実装型、基底クラス型、インターフェース型で解決できるように登録
-                    services.AddSingleton<MainAppContext<TMainForm>>();
-                    services.AddSingleton<ApplicationContext>(sp => sp.GetRequiredService<MainAppContext<TMainForm>>());
-                    services.AddSingleton<IShutdownRequestHandler>(sp => sp.GetRequiredService<MainAppContext<TMainForm>>());
+                    services.AddSingleton<WinFormsAppContext<TMainForm>>();
+                    services.AddSingleton<ApplicationContext>(sp => sp.GetRequiredService<WinFormsAppContext<TMainForm>>());
+                    services.AddSingleton<IShutdownRequestHandler>(sp => sp.GetRequiredService<WinFormsAppContext<TMainForm>>());
 
                     // --- WinFormsHostedService の登録 (Singleton) ---
                     services.AddHostedService<WinFormsHostedService>();
@@ -52,9 +52,9 @@ namespace WindowsFormsHosting
 
             // --- ApplicationContext の登録 (Singleton) ---
             // 実装型、基底クラス型、インターフェース型で解決できるように登録
-            builder.Services.AddSingleton<MainAppContext<TMainForm>>();
-            builder.Services.AddSingleton<ApplicationContext>(sp => sp.GetRequiredService<MainAppContext<TMainForm>>());
-            builder.Services.AddSingleton<IShutdownRequestHandler>(sp => sp.GetRequiredService<MainAppContext<TMainForm>>());
+            builder.Services.AddSingleton<WinFormsAppContext<TMainForm>>();
+            builder.Services.AddSingleton<ApplicationContext>(sp => sp.GetRequiredService<WinFormsAppContext<TMainForm>>());
+            builder.Services.AddSingleton<IShutdownRequestHandler>(sp => sp.GetRequiredService<WinFormsAppContext<TMainForm>>());
 
             // --- WinFormsHostedService の登録 (Singleton) ---
             builder.Services.AddHostedService<WinFormsHostedService>();

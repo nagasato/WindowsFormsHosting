@@ -25,6 +25,8 @@ namespace WindowsFormsHosting
                 {
                     // --- メインフォームの登録 (Singleton) ---
                     services.AddSingleton<TMainForm>();
+                    // WinFormsProviderの登録
+                    services.AddSingleton<IWinFormsProvider, WinFormsProvider>();
 
                     // --- ApplicationContext の登録 (Singleton) ---
                     // 実装型、基底クラス型、インターフェース型で解決できるように登録
@@ -49,6 +51,8 @@ namespace WindowsFormsHosting
         {
             // --- メインフォームの登録 (Singleton) ---
             builder.Services.AddSingleton<TMainForm>();
+            // WinFormsProviderの登録
+            builder.Services.AddSingleton<IWinFormsProvider, WinFormsProvider>();
 
             // --- ApplicationContext の登録 (Singleton) ---
             // 実装型、基底クラス型、インターフェース型で解決できるように登録

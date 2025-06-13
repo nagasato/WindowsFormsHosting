@@ -37,8 +37,6 @@ namespace WinFormsSampleApp1_NetFx48
 
             // WindowsFormsをGenericHostに載せる
             builder.AddWinFormsHosting<Form1>();
-            // --- FormFactoryとFormの登録 --- 
-            builder.Services.AddSingleton<IFormFactory, FormFactory>(); // Singleton
             builder.Services.AddTransient<Form2>(); // MainForm以外はTransientが大勢だろう
 
             var host = builder.Build();

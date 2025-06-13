@@ -1,12 +1,14 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using System;
+using System.Windows.Forms;
+using Microsoft.Extensions.DependencyInjection;
 
-namespace WinFormsSampleApp1
+namespace WindowsFormsHosting
 {
     /// <summary>
-    /// IFormFactory の実装
-    /// (IServiceProviderを使用してFormを取得する)
+    /// IWinFormsProvider の実装
+    /// (DIコンテナを使用してFormを取得する)
     /// </summary>
-    public class FormFactory : IFormFactory
+    public class WinFormsProvider : IWinFormsProvider
     {
         private readonly IServiceProvider _serviceProvider;
 
@@ -14,16 +16,15 @@ namespace WinFormsSampleApp1
         /// FormFactory Constructor
         /// </summary>
         /// <param name="serviceProvider"></param>
-        /// <exception cref="ArgumentNullException"></exception>
-        public FormFactory(IServiceProvider serviceProvider)
+        public WinFormsProvider(IServiceProvider serviceProvider)
         {
-            _serviceProvider = serviceProvider ?? throw new ArgumentNullException(nameof(serviceProvider));
+            _serviceProvider = serviceProvider;
         }
 
         /// <summary>
         /// 指定された型のFormインスタンスを取得する
         /// </summary>
-        public TForm CreateForm<TForm>() where TForm : Form
+        public TForm GetForm<TForm>() where TForm : Form
         {
             // DIコンテナから登録された TForm を取得する
             return _serviceProvider.GetRequiredService<TForm>();

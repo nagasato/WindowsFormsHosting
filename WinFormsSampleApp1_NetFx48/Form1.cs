@@ -1,24 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Extensions.Logging;
+using WindowsFormsHosting;
 
 namespace WinFormsSampleApp1_NetFx48
 {
     public partial class Form1: Form
     {
-        private readonly IFormFactory _formFactory;
+        private readonly ILogger<Form1> _logger;
+        private readonly IWinFormsProvider _winFormsProvider;
 
-        public Form1(IFormFactory formFactory)
+        public Form1(
+            IWinFormsProvider winFormsProvider,
+            ILogger<Form1> logger)
         {
             InitializeComponent();
 
-            _formFactory = formFactory ?? throw new ArgumentNullException(nameof(formFactory));
+            _logger = logger;
+            _winFormsProvider = winFormsProvider;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -29,8 +28,9 @@ namespace WinFormsSampleApp1_NetFx48
 
         private void button2_Click(object sender, EventArgs e)
         {
-            using (var f = _formFactory.CreateForm<Form2>())
+            using (var f = _winFormsProvider.GetForm<Form2>())
             {
+                _logger.LogInformation("Opening Form2...");
                 f.ShowDialog(this);
             }
         }

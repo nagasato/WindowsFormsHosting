@@ -1,20 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
+using Microsoft.Extensions.Logging;
 
 namespace WinFormsSampleApp1_NetFx48
 {
     public partial class Form2 : Form
     {
-        public Form2()
+        private ILogger<Form2> _logger;
+
+        public Form2(ILogger<Form2> logger)
         {
             InitializeComponent();
+
+            _logger = logger;
+
+            this.Load += (s, e) =>
+            {
+                _logger.LogInformation("Form2 Loaded.");
+            };
+
+            this.FormClosed += (s, e) =>
+            {
+                _logger.LogInformation("Form2 Closed.");
+            };
         }
     }
 }

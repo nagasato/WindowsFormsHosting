@@ -35,8 +35,6 @@ namespace WinFormsSampleApp1
 
             // WindowsForms‚ğGenericHost‚ÉÚ‚¹‚é
             builder.AddWinFormsHosting<Form1>();
-            // --- FormFactory‚ÆForm‚Ì“o˜^ --- 
-            builder.Services.AddSingleton<IFormFactory, FormFactory>(); // Singleton
             builder.Services.AddTransient<Form2>(); // MainFormˆÈŠO‚ÍTransient‚ª‘å¨‚¾‚ë‚¤
 
             var host = builder.Build();
